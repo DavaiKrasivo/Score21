@@ -81,7 +81,7 @@ int main(int argc, const char * argv[]) {
     mt19937 gen(rd());
     uniform_int_distribution<> dist(0,8);
     for (int i = 0; i < numberOfPlayers; i++){
-        while (1){
+        while (flag){
         while (1) {
             iIndexCardNow = dist(gen);
             if (deck[iIndexCardNow].flag < 0)
@@ -95,9 +95,25 @@ int main(int argc, const char * argv[]) {
         cout << "Играет " << i+1 << " игрок" << endl;
         cout << "Ваши очки: " << AllPlayer[i]->sum << endl;
         cout << "Еще?"<<endl;
-            while (1) {
-                //написать выбор н y/n
-            }
+        while (1)
+		{
+			char ch = _getch();
+			if (ch != 121)
+			{
+				if (ch != 110) 
+				{
+					continue;
+				}
+			}
+			if (ch == 121)
+			{
+				flag = 1; break;
+			}
+			if (ch == 110)
+			{
+				flag = 0; break;
+			}
+		}
     }
     }
     return 0;
